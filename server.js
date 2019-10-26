@@ -1,16 +1,20 @@
 const express = require('express');
 const morgan = require('morgan');
 require('dotenv').config({path: './config/config.env'});
-const colors = require('colors');
+require('colors');
 
 const connectDb = require('./config/database');
 const bootcamps = require('./routes/bootcamps');
 
+// connect to database
 connectDb();
 
+//Initialize express into app
 const app = express();
 
+//@: MIDDLEWARES
 app.use(express.json());
+
 if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'));
 }
