@@ -1,0 +1,17 @@
+{
+  "name": "devcamper_server",
+  "version": "1.0.0",
+  "description": "Backend server for devcamper bootcamp",
+  "main": "server.js",
+  "scripts": {
+    "start": "SET NODE_ENV=production & node server",
+    "dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "richard",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
