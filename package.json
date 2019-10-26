@@ -4,7 +4,7 @@
   "description": "Backend server for devcamper bootcamp",
   "main": "server.js",
   "scripts": {
-    "start": "SET NODE_ENV=production & node server",
+    "start": "SET NODE_ENV=production && node server",
     "dev": "nodemon server"
   },
   "keywords": [],
