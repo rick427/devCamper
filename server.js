@@ -5,6 +5,7 @@ require('colors');
 
 const connectDb = require('./config/database');
 const bootcamps = require('./routes/bootcamps');
+const courses = require('./routes/courses');
 const errorHandler = require('./middleware/error');
 
 // connect to database
@@ -22,6 +23,7 @@ if(process.env.NODE_ENV === 'development'){
 
 //Mount Routers
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 app.use(errorHandler);
 
 const port = process.env.PORT || 5000;

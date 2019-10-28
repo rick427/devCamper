@@ -49,7 +49,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
     query = query.skip(startIndex).limit(limit);
 
     //execute query
-    const bootcamp = await query.find();
+    const bootcamp = await query;
 
     //pagination result
     const pagination = {};
