@@ -5,6 +5,7 @@ require('colors');
 
 // Load models
 const Bootcamp = require('./models/Bootcamp');
+const Course = require('./models/Course');
 
 //Connect to the database
 mongoose.connect(process.env.MONGO_URI, {
@@ -12,17 +13,21 @@ mongoose.connect(process.env.MONGO_URI, {
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-}).then(console.log(`Database connected on port ${process.env.PORT}. Seeding Initiated...`.blue));
+}).then(console.log(`Database connected on port ${process.env.PORT}. Initiating seeding...`.blue));
 
 //Read JSON files
 const bootcamps = JSON.parse(
     fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8')
+)
+const courses = JSON.parse(
+    fs.readFileSync(`${__dirname}/_data/courses.json`, 'utf-8')
 )
 
 //Import files into db
 const importData = async () => {
     try {
         await Bootcamp.create(bootcamps);
+        await Course.create(courses);
         console.log('Data successfully imported to the database...'.green.inverse);
         process.exit();
     } catch (error) {
@@ -34,6 +39,7 @@ const importData = async () => {
 const deleteData = async () => {
     try {
         await Bootcamp.deleteMany();
+        await Course.deleteMany();
         console.log('Data successfully destroyed from the database...'.red.inverse);
         process.exit();
     } catch (error) {
