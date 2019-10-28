@@ -25,7 +25,7 @@ app.use('/api/v1/bootcamps', bootcamps);
 app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
-const server = app.listen(port, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`.yellow.bold))
+const server = app.listen(port, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`.yellow))
 
 //UNHANDLED PROMISE REJECTION Handler
 process.on('unhandledRejection', (err, promise) => {

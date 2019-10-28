@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI, {
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-}).then(console.log(`Database connected on port ${process.env.PORT} for seeding`.blue));
+}).then(console.log(`Database connected on port ${process.env.PORT}. Seeding Initiated...`.blue));
 
 //Read JSON files
 const bootcamps = JSON.parse(
