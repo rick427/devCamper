@@ -5,6 +5,7 @@ require('colors');
 
 const connectDb = require('./config/database');
 const bootcamps = require('./routes/bootcamps');
+const errorHandler = require('./middleware/error');
 
 // connect to database
 connectDb();
@@ -21,6 +22,7 @@ if(process.env.NODE_ENV === 'development'){
 
 //Mount Routers
 app.use('/api/v1/bootcamps', bootcamps);
+app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 const server = app.listen(port, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`.yellow.bold))
