@@ -8,6 +8,7 @@ require('colors');
 const connectDb = require('./config/database');
 const bootcamps = require('./routes/bootcamps');
 const courses = require('./routes/courses');
+const auth = require('./routes/auth');
 const errorHandler = require('./middleware/error');
 
 // connect to database
@@ -34,10 +35,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Mount Routers
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
+app.use('/api/v1/auth', auth);
 app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
-const server = app.listen(port, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`.yellow))
+const server = app.listen(port, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`.yellow.bold))
 
 //UNHANDLED PROMISE REJECTION Handler
 process.on('unhandledRejection', (err, promise) => {
