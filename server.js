@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 require('dotenv').config({path: './config/config.env'});
 require('colors');
@@ -19,8 +20,11 @@ const app = express();
 
 //@: MIDDLEWARES
 
-// body-parsing
+// body-parser
 app.use(express.json());
+
+// cookie-parser
+app.use(cookieParser());
 
 // logger
 if(process.env.NODE_ENV === 'development'){
