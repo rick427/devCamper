@@ -7,6 +7,7 @@ const {
   deleteBootcamp,
   getBootcampsInRadius
 } = require('../controller/bootcamps');
+
 //Include other resource routers
 const courseRouter = require('./courses');
 
