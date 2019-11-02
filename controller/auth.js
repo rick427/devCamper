@@ -17,7 +17,8 @@ exports.register = asyncHandler(async (req, res, next) => {
 
     //Create token
     sendTokenRes(user, 200, res);
-})
+});
+
 
 // @desc     Login user
 // @route    POST /api/v1/auth/login
@@ -42,10 +43,11 @@ exports.login = asyncHandler(async (req, res, next) => {
 
     //create token
     sendTokenRes(user, 200, res);
-})
+});
 
-//Get token from model, create cookie and send response
+//@: UTILS
 const sendTokenRes = (user, statusCode, res) => {
+    //Get token from model, create cookie and send response
     // create token
     const token = user.getSignedJwtToken();
 
@@ -66,3 +68,15 @@ const sendTokenRes = (user, statusCode, res) => {
             token
     })
 }
+
+
+// @desc     Get current logged in user
+// @route    POST /api/v1/auth/me
+// @access   PRIVATE
+exports.getMe = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+  res.status(200).json({
+      status: 'success',
+      data: user
+  })
+});
