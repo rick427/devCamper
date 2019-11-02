@@ -15,6 +15,7 @@ const router = express.Router();
 // Re-route into other resource routers
 router.use('/:bootcampId/courses', courseRouter);
 
+
 router.route('/radius/:zipcode/:distance')
   .get(getBootcampsInRadius);
 
